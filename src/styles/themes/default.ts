@@ -22,8 +22,8 @@ export const defaultTheme = {
   "white-default": "#ffffff",
 
   // FONT FAMILY
-  "title-font": "Baloo 2",
-  "text-font": "Roboto",
+  "title-family": "Baloo 2",
+  "text-family": "Roboto",
 
   // TITLE FONT SIZE &  WEIGHT
   "title-xl-size": "48px",
@@ -60,4 +60,7 @@ export const defaultTheme = {
 
   "button-md-size": "12px",
   "button-md-weight": "400",
+
+  // BACKGROUND IMAGE
+  "hero-br-img": "url('src/assets/img/Background.png')",
 };

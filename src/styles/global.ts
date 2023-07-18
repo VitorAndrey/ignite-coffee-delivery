@@ -14,17 +14,13 @@ export const GlobalStyle = createGlobalStyle`
     input,
     textarea,
     button{
-        font-family: "Roboto", sans-serif;
         font-weight: 400;
         font-size: 1rem;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
 
-    body,
-    input,
-    textarea
-    {
+    h1, h2, h3, p {
         line-height: 130%;
     }
 

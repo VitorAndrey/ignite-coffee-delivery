@@ -1,6 +1,10 @@
 import { styled } from "styled-components";
 
 export const NavbarContainer = styled.nav`
+  margin: 0 auto;
+  width: 95%;
+  max-width: 1120px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,6 +36,7 @@ export const MapIcon = styled.div`
     display: none;
 
     color: ${(props) => props.theme["purple-dark"]};
+    font-family: ${(props) => props.theme["text-family"]};
 
     @media screen and (min-width: 768px) {
       display: block;
