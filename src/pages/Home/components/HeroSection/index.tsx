@@ -1,11 +1,16 @@
-import { HeroContent, HeroSectionContainer } from "./style";
+import { HeroContent, HeroImage, HeroSectionContainer, HeroText } from "./style";
 
 export function HeroSection() {
   return (
     <HeroSectionContainer>
       <HeroContent>
-        <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-        <img src="src/assets/img/main-coffee-image.png" alt="Imagem Café" />
+        <HeroText>
+          <h1>Encontre o café perfeito para qualquer hora do dia</h1>
+          <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+        </HeroText>
+        <HeroImage>
+          <img src="src/assets/img/main-coffee-image.png" alt="Imagem Café" />
+        </HeroImage>
       </HeroContent>
     </HeroSectionContainer>
   );
