@@ -9,7 +9,7 @@ export function HeroSection() {
           <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
         </HeroText>
         <HeroImage>
-          <img src="src/assets/img/main-coffee-image.png" alt="Imagem Café" />
+          <img src="/main-coffee-image.png" alt="Imagem Café" />
         </HeroImage>
       </HeroContent>
     </HeroSectionContainer>

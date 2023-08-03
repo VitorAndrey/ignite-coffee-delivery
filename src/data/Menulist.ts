@@ -1,7 +1,7 @@
 export const menuList = [
   {
     id: "1",
-    image: "/src/assets/svg/expresso-tradicional.svg",
+    image: "/expresso-tradicional.svg",
     coffeeName: "Expresso Tradicional",
     tagList: ["Tradicional"],
     description: "O tradicional café feito com água quente e grãos moídos",
@@ -9,7 +9,7 @@ export const menuList = [
   },
   {
     id: "2",
-    image: "/src/assets/svg/expresso-americano.svg",
+    image: "/expresso-americano.svg",
     coffeeName: "Expresso Americano",
     tagList: ["Tadicional"],
     description: "Expresso diluído, menos intenso que o tradicional",
@@ -17,7 +17,7 @@ export const menuList = [
   },
   {
     id: "3",
-    image: "/src/assets/svg/expresso-cremoso.svg",
+    image: "/expresso-cremoso.svg",
     coffeeName: "Expresso Cremoso",
     tagList: ["Tradicional"],
     description: "Café expresso tradicional com espuma cremosa",
@@ -25,7 +25,7 @@ export const menuList = [
   },
   {
     id: "4",
-    image: "/src/assets/svg/expresso-gelado.svg",
+    image: "/expresso-gelado.svg",
     coffeeName: "Expresso Gelado",
     tagList: ["Tradicional", "Gelado"],
     description: "Bebida preparada com café expresso e cubos de gelo",
@@ -33,7 +33,7 @@ export const menuList = [
   },
   {
     id: "5",
-    image: "/src/assets/svg/cafe-com-leite.svg",
+    image: "/cafe-com-leite.svg",
     coffeeName: "Café com Leite",
     tagList: ["Tradicional", "Com Leite"],
     description: "Meio a meio de expresso tradicional com leite vaporizado",
@@ -41,7 +41,7 @@ export const menuList = [
   },
   {
     id: "6",
-    image: "src/assets/svg/latte.svg",
+    image: "/latte.svg",
     coffeeName: "Latte",
     tagList: ["Tradicional", "Leite"],
     description: "Uma dose de café expresso com o dobro de leite e espuma cremosa",
@@ -49,7 +49,7 @@ export const menuList = [
   },
   {
     id: "7",
-    image: "src/assets/svg/capuccino.svg",
+    image: "/capuccino.svg",
     coffeeName: "Cappuccino",
     tagList: ["Tradicional", "Com Leite"],
     description: "Bebida com canela feita de doses iguais de café, leite e espuma",
@@ -57,7 +57,7 @@ export const menuList = [
   },
   {
     id: "8",
-    image: "src/assets/svg/macchiato.svg",
+    image: "/macchiato.svg",
     coffeeName: "Macchiato",
     tagList: ["Tradicional", "Com Leite"],
     description: "Café expresso misturado com um pouco de leite quente e espuma",
@@ -65,7 +65,7 @@ export const menuList = [
   },
   {
     id: "9",
-    image: "src/assets/svg/mocaccino.svg",
+    image: "/mocaccino.svg",
     coffeeName: "Mocaccino",
     tagList: ["Tradicional", "Com Leite"],
     description: "Café expresso com calda de chocolate, pouco leite e espuma",
@@ -73,7 +73,7 @@ export const menuList = [
   },
   {
     id: "10",
-    image: "src/assets/svg/chocolate-quente.svg",
+    image: "/chocolate-quente.svg",
     coffeeName: "Chocolate Quente",
     tagList: ["Especial", "Com Leite"],
     description: "Bebida feita com chocolate dissolvido no leite quente e café",
@@ -81,7 +81,7 @@ export const menuList = [
   },
   {
     id: "11",
-    image: "src/assets/svg/cubano.svg",
+    image: "/cubano.svg",
     coffeeName: "Cubano",
     tagList: ["Especial", "Alcoólico", "Gelado"],
     description: "Drink gelado de café expresso com rum, creme de leite e hortelã",
@@ -89,7 +89,7 @@ export const menuList = [
   },
   {
     id: "12",
-    image: "src/assets/svg/havaiano.svg",
+    image: "/havaiano.svg",
     coffeeName: "Havaiano",
     tagList: ["Especial"],
     description: "Bebida adocicada preparada com café e leite de coco",
@@ -97,7 +97,7 @@ export const menuList = [
   },
   {
     id: "13",
-    image: "src/assets/svg/arabe.svg",
+    image: "/arabe.svg",
     coffeeName: "Árabe",
     tagList: ["Especial"],
     description: "Um café com notas frutadas, como um coquetel tropical.",
@@ -105,7 +105,7 @@ export const menuList = [
   },
   {
     id: "14",
-    image: "src/assets/svg/irlandes.svg",
+    image: "/irlandes.svg",
     coffeeName: "Irlandês",
     tagList: ["Especial", "Alcoólico"],
     description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",

@@ -62,5 +62,5 @@ export const defaultTheme = {
   "button-md-weight": "400",
 
   // BACKGROUND IMAGE
-  "hero-br-img": "url('src/assets/img/Background.png')",
+  "hero-br-img": "url('/Background.png')",
 };
