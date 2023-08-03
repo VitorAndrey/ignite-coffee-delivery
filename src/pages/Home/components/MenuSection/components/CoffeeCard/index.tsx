@@ -1,4 +1,5 @@
 import { CoffeeTag } from "../CoffeeTag";
+import { ShoppingCart } from "@phosphor-icons/react";
 import { AddToCartContainer, CardContainer, PriceContainer, TagsList } from "./style";
 
 interface CoffeeCardProps {
@@ -48,7 +49,9 @@ export function CoffeeCard({ item }: CoffeeCardProps) {
             <p>1</p>
             <button>+</button>
           </div>
-          <div>Cart</div>
+          <div>
+            <ShoppingCart weight="fill" />
+          </div>
         </AddToCartContainer>
       </PriceContainer>
     </CardContainer>

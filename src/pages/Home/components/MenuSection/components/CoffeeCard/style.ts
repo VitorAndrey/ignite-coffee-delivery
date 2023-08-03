@@ -55,7 +55,6 @@ export const AddToCartContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-  height: 2rem;
 
   div:nth-child(1) {
     background: #e6e5e5;
@@ -63,18 +62,19 @@ export const AddToCartContainer = styled.div`
     align-items: center;
     border-radius: 6px;
     padding: 0 3px;
-    height: 100%;
+    height: 2rem;
   }
 
   div:nth-child(2) {
     background: ${(props) => props.theme["purple-dark"]};
     color: #fff;
-    height: 100%;
+    height: 2rem;
+    width: 2rem;
     padding: 0 3px;
     border-radius: 6px;
     display: flex;
     align-items: center;
-    justify-content: content;
+    justify-content: center;
   }
 
   button {
