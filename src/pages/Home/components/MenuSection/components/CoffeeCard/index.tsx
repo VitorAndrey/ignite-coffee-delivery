@@ -43,11 +43,13 @@ export function CoffeeCard({ item }: CoffeeCardProps) {
           {formattedPrice}
         </p>
         <AddToCartContainer>
-          <button>-</button>
-          <p>1</p>
-          <button>+</button>
+          <div>
+            <button>-</button>
+            <p>1</p>
+            <button>+</button>
+          </div>
+          <div>Cart</div>
         </AddToCartContainer>
-        <p>Cart</p>
       </PriceContainer>
     </CardContainer>
   );

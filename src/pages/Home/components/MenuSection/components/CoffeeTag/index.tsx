@@ -1,7 +1,9 @@
+import { TagContainer } from "./style";
+
 interface CoffeeTagProps {
   tag: string;
 }
 
 export function CoffeeTag({ tag }: CoffeeTagProps) {
-  return <div> {tag} </div>;
+  return <TagContainer>{tag}</TagContainer>;
 }
