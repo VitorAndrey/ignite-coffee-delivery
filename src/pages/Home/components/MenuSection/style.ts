@@ -5,6 +5,8 @@ export const MenuSectionContainer = styled.section`
   width: 95%;
   max-width: 1120px;
 
+  padding: 32px 0;
+
   h2 {
     margin-bottom: 54px;
     font-family: "${(props) => props.theme["title-family"]}";
@@ -18,5 +20,5 @@ export const CoffeeListContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 32px;
 `;

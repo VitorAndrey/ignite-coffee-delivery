@@ -1,5 +1,5 @@
 import { CoffeeTag } from "../CoffeeTag";
-import { CardContainer, PriceContainer, TagsList } from "./style";
+import { AddToCartContainer, CardContainer, PriceContainer, TagsList } from "./style";
 
 interface CoffeeCardProps {
   item: {
@@ -8,6 +8,7 @@ interface CoffeeCardProps {
     coffeeName: string;
     tagList: string[];
     description: string;
+    price: number;
   };
 }
 
@@ -17,7 +18,10 @@ export function CoffeeCard({ item }: CoffeeCardProps) {
     coffeeName = "Expresso",
     tagList = ["Tradicional", "Com leite"],
     description = "seu expresso delicioso",
+    price = 9.99,
   } = item;
+
+  const formattedPrice = String(price).replace(".", ",");
 
   return (
     <CardContainer>
@@ -35,13 +39,14 @@ export function CoffeeCard({ item }: CoffeeCardProps) {
 
       <PriceContainer>
         <p>
-          <span>R$</span>9,99
+          <span>R$</span>
+          {formattedPrice}
         </p>
-        <div>
+        <AddToCartContainer>
           <button>-</button>
           <p>1</p>
           <button>+</button>
-        </div>
+        </AddToCartContainer>
         <p>Cart</p>
       </PriceContainer>
     </CardContainer>
