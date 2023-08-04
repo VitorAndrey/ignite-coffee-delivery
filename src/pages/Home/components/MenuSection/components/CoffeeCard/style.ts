@@ -10,7 +10,7 @@ export const CardContainer = styled.div`
 
   width: 100%;
   max-width: 256px;
-  height: 310px;
+  min-height: 310px;
   border-radius: 6px 36px;
   padding: 1rem;
 
@@ -25,13 +25,18 @@ export const CardContainer = styled.div`
   h3 {
     font-family: "${(props) => props.theme["title-family"]}";
   }
+
+  p {
+    font-family: ${(props) => props.theme["text-family"]};
+    font-size: ${(props) => props.theme["text-sm-size"]};
+  }
 `;
 
 export const PriceContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
+  align-items: end;
   width: 100%;
-  align-items: center;
 
   p {
     font-family: "${(props) => props.theme["title-family"]}";
@@ -54,7 +59,8 @@ export const TagsList = styled.div`
 export const AddToCartContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
+  margin-top: 1rem;
 
   div:nth-child(1) {
     background: #e6e5e5;
@@ -63,6 +69,7 @@ export const AddToCartContainer = styled.div`
     border-radius: 6px;
     padding: 0 3px;
     height: 2rem;
+    gap: 5px;
   }
 
   div:nth-child(2) {
@@ -75,14 +82,26 @@ export const AddToCartContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    :active {
+      scale: 0.95;
+    }
   }
 
   button {
+    display: flex;
+    align-items: center;
     border: none;
     background: none;
     color: ${(props) => props.theme["purple-default"]};
-    padding: 3px 6px;
+    padding: 6px;
     cursor: pointer;
+
+    :active {
+      color: ${(props) => props.theme["purple-dark"]};
+    }
   }
 
   p {
