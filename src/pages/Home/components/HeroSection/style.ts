@@ -23,13 +23,13 @@ export const HeroContent = styled.div`
 
   padding: 5.75rem 0;
 
-  @media screen and (max-width: 705px) {
+  @media screen and (max-width: 720px) {
     flex-direction: column;
   }
 `;
 
 export const HeroText = styled.div`
-  flex: 1;
+  flex: 1.1;
   display: flex;
   gap: 1rem;
   flex-direction: column;
@@ -49,6 +49,44 @@ export const HeroText = styled.div`
   }
 `;
 
+export const TagsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+
+  p {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: ${(props) => props.theme["base-text"]};
+    font-size: ${(props) => props.theme["text-sm-size"]};
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+      padding: 5px;
+    }
+
+    &:nth-child(1) span {
+      background: ${(props) => props.theme["yellow-dark"]};
+    }
+    &:nth-child(2) span {
+      background: ${(props) => props.theme["base-text"]};
+    }
+    &:nth-child(3) span {
+      background: ${(props) => props.theme["yellow-default"]};
+    }
+    &:nth-child(4) span {
+      background: ${(props) => props.theme["purple-default"]};
+    }
+  }
+`;
+
 export const HeroImage = styled.div`
   flex: 1;
   display: flex;
@@ -60,7 +98,7 @@ export const HeroImage = styled.div`
     max-width: 476px;
   }
 
-  @media screen and (max-width: 705px) {
+  @media screen and (max-width: 720px) {
     justify-content: center;
   }
 `;

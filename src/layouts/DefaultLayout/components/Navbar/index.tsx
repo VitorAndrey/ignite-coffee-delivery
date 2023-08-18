@@ -1,18 +1,24 @@
 import { MapPin, ShoppingCart } from "@phosphor-icons/react";
 import { CartIcon, MapIcon, NavbarContainer, NavigationContainer } from "./styles";
 
+import { useContext } from "react";
+import { AddressContext } from "../../../../contexts/AddressContext";
+import { Link } from "react-router-dom";
+
 export function Navbar() {
+  const { address } = useContext(AddressContext);
+
   return (
     <NavbarContainer>
-      <a href="/">
+      <Link to="/">
         <img src="/Logo.png" alt="Logo" />
-      </a>
+      </Link>
 
-      <a href="/cart">
+      <Link to="/cart">
         <NavigationContainer>
           <MapIcon>
             <MapPin size={22} weight="fill" color="#8047F8" />
-            <span>Porto Alegre, RS</span>
+            <span>{address}</span>
           </MapIcon>
 
           <CartIcon>
@@ -20,7 +26,7 @@ export function Navbar() {
             <span>3</span>
           </CartIcon>
         </NavigationContainer>
-      </a>
+      </Link>
     </NavbarContainer>
   );
 }

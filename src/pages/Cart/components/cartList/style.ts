@@ -12,12 +12,6 @@ export const CardListContainer = styled.div`
   background: ${(props) => props.theme["base-card"]};
   font-family: ${(props) => props.theme["text-family"]};
 
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
   p {
     display: flex;
     align-items: center;
@@ -34,12 +28,28 @@ export const CardListContainer = styled.div`
     font-weight: ${(props) => props.theme["text-md-weight-bold"]};
   }
 
-  button {
-    background: ${(props) => props.theme["yellow-default"]};
-    color: white;
-    border: none;
-    padding: 5px;
-    font-size: ${(props) => props.theme["button-md-size"]};
-    border-radius: 6px;
+  @media screen and (max-width: 425px) {
+    padding: 0.8rem;
   }
 `;
+
+export const ConfirmButton = styled.button`
+  background: ${(props) => props.theme["yellow-default"]};
+  color: white;
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.6rem 0;
+  cursor: pointer;
+  font-size: ${(props) => props.theme["button-md-size"]};
+  border-radius: 6px;
+`;
+
+export const TotalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+export const ListContainer = styled.div``;
