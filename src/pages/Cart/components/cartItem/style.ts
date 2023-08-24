@@ -53,3 +53,15 @@ export const AddAndRemoveButton = styled.button`
   color: ${(props) => props.theme["purple-default"]};
   cursor: pointer;
 `;
+
+export const NameAndPriceContainer = styled.div`
+  display: flex;
+
+  p:nth-child(1) {
+    flex: 1;
+  }
+`;
+
+export const ContentContainer = styled.div`
+  width: 100%;
+`;

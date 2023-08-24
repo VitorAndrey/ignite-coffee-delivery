@@ -8,17 +8,29 @@ import {
   AddAndRemoveButton,
   RemoveFromCartContainer,
   ActionsContainer,
+  NameAndPriceContainer,
+  ContentContainer,
 } from "./style";
 import { Minus, Plus, Trash } from "@phosphor-icons/react";
 
 export default function CartItem({ coffee }: { coffee: CoffeeType }) {
   const { handleAddItem, handleRemoveItem, handleDeleteItem } = useContext(CartContext);
 
+  const totalItemsPrice = coffee.price * coffee.quantity;
+
   return (
     <CartItemContainer>
       <CoffeeImage src={coffee.image} />
-      <div>
-        {coffee.coffeeName}
+      <ContentContainer>
+        <NameAndPriceContainer>
+          <p>{coffee.coffeeName}</p>
+          <p>
+            {totalItemsPrice.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })}
+          </p>
+        </NameAndPriceContainer>
         <ActionsContainer>
           <AddToCartContainer>
             <AddAndRemoveButton onClick={() => handleRemoveItem(coffee)}>
@@ -34,7 +46,7 @@ export default function CartItem({ coffee }: { coffee: CoffeeType }) {
             <p>Remover</p>
           </RemoveFromCartContainer>
         </ActionsContainer>
-      </div>
+      </ContentContainer>
     </CartItemContainer>
   );
 }

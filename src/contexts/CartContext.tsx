@@ -7,12 +7,15 @@ interface CartContextType {
   handleRemoveItem: (item: CoffeeType) => void;
   quantity: (coffeeName: string) => number;
   handleDeleteItem: (item: CoffeeType) => void;
+  handleTotalItemsPrice: (totalItemsPrice: number) => void;
+  totalItemsPrice: number;
 }
 
 export const CartContext = createContext({} as CartContextType);
 
 export function CartContextProvider({ children }: { children: ReactNode }) {
   const [cartList, setCartList] = useState<CoffeeType[]>([]);
+  const [totalItemsPrice, setTotalItemsPrice] = useState<number>(0);
 
   function handleAddItem(item: CoffeeType) {
     const alreadyInCartItem = cartList.find((cartItem) => cartItem.coffeeName === item.coffeeName);
@@ -65,13 +68,21 @@ export function CartContextProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  useEffect(() => {
-    console.log(cartList);
-  }, [cartList]);
+  function handleTotalItemsPrice(totalItemsPrice: number) {
+    setTotalItemsPrice((prevValue) => prevValue + totalItemsPrice);
+  }
 
   return (
     <CartContext.Provider
-      value={{ cartList, handleAddItem, handleRemoveItem, quantity, handleDeleteItem }}
+      value={{
+        cartList,
+        handleAddItem,
+        handleRemoveItem,
+        quantity,
+        handleDeleteItem,
+        handleTotalItemsPrice,
+        totalItemsPrice,
+      }}
     >
       {children}
     </CartContext.Provider>
