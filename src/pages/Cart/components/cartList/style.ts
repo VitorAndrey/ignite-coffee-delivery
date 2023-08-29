@@ -44,6 +44,15 @@ export const ConfirmButton = styled.button`
   cursor: pointer;
   font-size: ${(props) => props.theme["button-md-size"]};
   border-radius: 6px;
+
+  :disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  a {
+    color: white;
+  }
 `;
 
 export const TotalContainer = styled.div`
@@ -52,4 +61,13 @@ export const TotalContainer = styled.div`
   gap: 12px;
 `;
 
-export const ListContainer = styled.div``;
+export const ListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const EmptyCartImage = styled.img`
+  max-width: 200px;
+  width: 100%;
+`;

@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 export const CartItemContainer = styled.div`
+  width: 100%;
   display: flex;
   gap: 1.5rem;
   padding: 2rem 0;

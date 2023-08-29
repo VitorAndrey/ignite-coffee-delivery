@@ -1,11 +1,18 @@
 import CartList from "./components/cartList";
-import { CartSectionContainer } from "./style";
+import { AdressCard, CartSectionContainer, PaymentCard } from "./style";
 
 export function Cart() {
   return (
     <CartSectionContainer>
-      <h2>Cafés selecionados</h2>
-      <CartList />
+      <div>
+        <h2>Cafés selecionados</h2>
+        <CartList />
+      </div>
+      <div>
+        <h2>Complete seu pedido</h2>
+        <AdressCard />
+        <PaymentCard />
+      </div>
     </CartSectionContainer>
   );
 }
