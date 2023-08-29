@@ -29,7 +29,7 @@ export const CardListContainer = styled.div`
   }
 
   @media screen and (max-width: 425px) {
-    padding: 0.8rem;
+    padding: 2rem 0.8rem;
   }
 `;
 
@@ -41,6 +41,7 @@ export const ConfirmButton = styled.button`
   text-transform: uppercase;
   font-weight: bold;
   padding: 0.6rem 0;
+  margin: 0 1rem;
   cursor: pointer;
   font-size: ${(props) => props.theme["button-md-size"]};
   border-radius: 6px;

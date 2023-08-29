@@ -12,6 +12,9 @@ export const CartSectionContainer = styled.section`
     width: 100%;
     max-width: 448px;
   }
+  div:nth-child(2) {
+    width: 100%;
+  }
 
   h2 {
     font-family: "${(props) => props.theme["title-family"]}";
@@ -21,10 +24,25 @@ export const CartSectionContainer = styled.section`
 
   @media screen and (max-width: 1024px) {
     flex-direction: column;
-    align-items: center;
   }
 `;
 
-export const AdressCard = styled.div``;
+export const AdressCard = styled.div`
+  background: ${(props) => props.theme["base-card"]};
+  padding: 2rem;
+  border-radius: 15px;
 
-export const PaymentCard = styled.div``;
+  div:nth-child(1) {
+    display: flex;
+  }
+`;
+
+export const PaymentCard = styled.div`
+  background: ${(props) => props.theme["base-card"]};
+  padding: 2rem;
+  border-radius: 15px;
+
+  div:nth-child(1) {
+    display: flex;
+  }
+`;
