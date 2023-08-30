@@ -13,25 +13,37 @@ export function Cart() {
         <h2>Complete seu pedido</h2>
         <AdressCard>
           <div>
-            <MapPinLine size={32} color="#c47f17" />
+            <MapPinLine size={26} color="#c47f17" />
             <p>
               <span>Endereço de Entrega</span>
+              <br />
               Informe o endereço onde deseja receber seu pedido
             </p>
           </div>
         </AdressCard>
         <PaymentCard>
           <div>
-            <CurrencyDollar size={32} color="#8047f8" />
+            <CurrencyDollar size={26} color="#8047f8" />
             <p>
-              <span>Endereço de Entrega</span>
-              Informe o endereço onde deseja receber seu pedido
+              <span>Pagamento</span>
+              <br />O pagamento é feito na entrega. Escolha a como deseja pagar
             </p>
           </div>
 
-          <CreditCard size={32} color="#8047f8" />
-          <Bank size={32} color="#8047f8" />
-          <Money size={32} color="#8047f8" />
+          <div>
+            <button>
+              <CreditCard size={18} color="#8047f8" />
+              <p>Cartão de crédito</p>
+            </button>
+            <button>
+              <Bank size={18} color="#8047f8" />
+              <p>cartão de débito</p>
+            </button>
+            <button>
+              <Money size={18} color="#8047f8" />
+              <p>dinheiro</p>
+            </button>
+          </div>
         </PaymentCard>
       </div>
     </CartSectionContainer>

@@ -31,18 +31,66 @@ export const AdressCard = styled.div`
   background: ${(props) => props.theme["base-card"]};
   padding: 2rem;
   border-radius: 15px;
+  min-height: 372px;
+  margin-bottom: 1rem;
 
   div:nth-child(1) {
     display: flex;
+  }
+
+  p {
+    font-family: ${(props) => props.theme["text-family"]};
+    margin-left: 0.8rem;
+    font-size: 14px;
+  }
+
+  span {
+    font-size: 16px;
   }
 `;
 
 export const PaymentCard = styled.div`
   background: ${(props) => props.theme["base-card"]};
+  font-family: ${(props) => props.theme["text-family"]};
   padding: 2rem;
   border-radius: 15px;
+  min-height: 207px;
 
   div:nth-child(1) {
     display: flex;
+    margin-bottom: 1.5rem;
+
+    p {
+      margin-left: 0.8rem;
+      font-size: 14px;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  div:nth-child(2) {
+    flex: 1;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8rem;
+      background: ${(props) => props.theme["base-button"]};
+      font-size: 12px;
+      text-transform: uppercase;
+      width: 178px;
+      height: 50px;
+      border-radius: 6px;
+      border: none;
+    }
   }
 `;
