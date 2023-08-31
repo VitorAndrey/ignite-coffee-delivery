@@ -1,14 +1,14 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "@phosphor-icons/react";
 import CartList from "./components/cartList";
-import { AdressCard, CartSectionContainer, PaymentCard } from "./style";
+import { AdressCard, CardSection, CartSectionContainer, PaymentCard } from "./style";
 
 export function Cart() {
   return (
     <CartSectionContainer>
-      <div>
+      <CardSection>
         <h2>Cafés selecionados</h2>
         <CartList />
-      </div>
+      </CardSection>
       <div>
         <h2>Complete seu pedido</h2>
         <AdressCard>

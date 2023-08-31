@@ -10,14 +10,17 @@ import { useContext } from "react";
 import { CartContext } from "../../../../contexts/CartContext";
 import CartItem from "../cartItem";
 import { Link } from "react-router-dom";
-import emptyCart from "../../../../../public/emptyCart.png";
 
 export default function CartList() {
-  const { cartList, totalItemsPrice = 0 } = useContext(CartContext);
-
+  const { cartList } = useContext(CartContext);
   const hasItems = cartList.length > 0;
+  const delivery = cartList.length > 0 ? 3.5 : 0;
 
-  console.log(hasItems);
+  let totalItemsPrice = 0;
+
+  cartList.map((coffee) => {
+    totalItemsPrice += coffee.price * coffee.quantity;
+  });
 
   return (
     <CardListContainer>
@@ -25,7 +28,7 @@ export default function CartList() {
         {cartList.length > 0 ? (
           cartList.map((coffee, index) => <CartItem coffee={coffee} key={index} />)
         ) : (
-          <EmptyCartImage src={emptyCart} />
+          <EmptyCartImage src="/emptyCart.png" />
         )}
       </ListContainer>
 
@@ -40,12 +43,18 @@ export default function CartList() {
           </span>
         </p>
         <p>
-          Entrega <span>R$ 3,50</span>
+          Entrega{" "}
+          <span>
+            {delivery.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })}
+          </span>
         </p>
         <p>
           Total{" "}
           <span>
-            {(totalItemsPrice + 3.5).toLocaleString("pt-BR", {
+            {(totalItemsPrice + delivery).toLocaleString("pt-BR", {
               style: "currency",
               currency: "BRL",
             })}

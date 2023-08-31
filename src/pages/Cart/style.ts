@@ -8,10 +8,6 @@ export const CartSectionContainer = styled.section`
   padding: 32px 0;
   gap: 2rem;
 
-  div:nth-child(1) {
-    width: 100%;
-    max-width: 448px;
-  }
   div:nth-child(2) {
     width: 100%;
   }
@@ -25,6 +21,11 @@ export const CartSectionContainer = styled.section`
   @media screen and (max-width: 1024px) {
     flex-direction: column;
   }
+`;
+
+export const CardSection = styled.div`
+  width: 100%;
+  max-width: 448px;
 `;
 
 export const AdressCard = styled.div`

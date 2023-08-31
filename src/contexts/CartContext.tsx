@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useState } from "react";
 import { CoffeeType } from "../pages/Home/components/MenuSection/components/CoffeeCard";
 
 interface CartContextType {
