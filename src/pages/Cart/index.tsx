@@ -1,6 +1,7 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "@phosphor-icons/react";
 import CartList from "./components/cartList";
 import { AdressCard, CardSection, CartSectionContainer, PaymentCard } from "./style";
+import { InputContainer } from "../ SuccessfulPurchase/style";
 
 export function Cart() {
   return (
@@ -20,6 +21,22 @@ export function Cart() {
               Informe o endereço onde deseja receber seu pedido
             </p>
           </div>
+
+          <InputContainer>
+            <input type="number" placeholder="CEP" className="inputOne" required />
+            <div>
+              <input type="text" placeholder="Rua" className="inputTwo" required />
+            </div>
+            <div>
+              <input type="number" placeholder="Número" className="inputThree" required />
+              <input type="text" placeholder="Complemento" className="inputFour" />
+            </div>
+            <div>
+              <input type="text" placeholder="Bairro" className="inputFive" required />
+              <input type="text" placeholder="Cidade" className="inputSix" required />
+              <input type="text" placeholder="UF" className="inputSeven" required />
+            </div>
+          </InputContainer>
         </AdressCard>
         <PaymentCard>
           <div>

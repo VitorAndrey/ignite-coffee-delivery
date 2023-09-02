@@ -37,6 +37,7 @@ export const AdressCard = styled.div`
 
   div:nth-child(1) {
     display: flex;
+    margin-bottom: 2rem;
   }
 
   p {

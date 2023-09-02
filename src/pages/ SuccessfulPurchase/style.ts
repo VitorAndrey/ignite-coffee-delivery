@@ -82,3 +82,60 @@ export const Gradient = styled.div`
   padding: 1px;
   max-width: 526px;
 `;
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+  gap: 16px;
+
+  .inputOne,
+  .inputThree,
+  .inputFive {
+    width: 200px;
+  }
+
+  .inputTwo {
+    flex: 1;
+  }
+
+  .inputFour {
+    flex: 1;
+  }
+
+  .inputSix {
+    flex: 1;
+  }
+
+  .inputSeven {
+    width: 60px;
+  }
+
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid ${(props) => props.theme["base-button"]};
+    background: ${(props) => props.theme["base-input"]};
+  }
+
+  @media screen and (max-width: 550px) {
+    .inputOne,
+    .inputTwo,
+    .inputThree,
+    .inputFour,
+    .inputFive,
+    .inputSix,
+    .inputSeven {
+      width: 100%;
+    }
+  }
+`;
