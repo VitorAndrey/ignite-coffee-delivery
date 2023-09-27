@@ -83,7 +83,7 @@ export const Gradient = styled.div`
   max-width: 526px;
 `;
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: start;

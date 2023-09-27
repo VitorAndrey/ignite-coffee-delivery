@@ -1,6 +1,7 @@
 import {
   CardListContainer,
   ConfirmButton,
+  DisabledButton,
   EmptyCartImage,
   ListContainer,
   TotalContainer,
@@ -9,9 +10,12 @@ import {
 import { useContext } from "react";
 import { CartContext } from "../../../../contexts/CartContext";
 import CartItem from "../cartItem";
-import { Link } from "react-router-dom";
 
-export default function CartList() {
+type CartListProps = {
+  handleExternalSubmit: () => void;
+};
+
+export default function CartList({ handleExternalSubmit }: CartListProps) {
   const { cartList } = useContext(CartContext);
   const hasItems = cartList.length > 0;
   const delivery = cartList.length > 0 ? 3.5 : 0;
@@ -28,7 +32,9 @@ export default function CartList() {
         {cartList.length > 0 ? (
           cartList.map((coffee, index) => <CartItem coffee={coffee} key={index} />)
         ) : (
-          <EmptyCartImage src="/emptyCart.png" />
+          <EmptyCartImage>
+            <img src="/emptyCart.png" alt="Carregando..." />
+          </EmptyCartImage>
         )}
       </ListContainer>
 
@@ -61,9 +67,13 @@ export default function CartList() {
           </span>
         </p>
       </TotalContainer>
-      <ConfirmButton disabled={!hasItems}>
-        <Link to={"/seccessfulpurchase"}>Confirmar Pedido</Link>
-      </ConfirmButton>
+      {hasItems ? (
+        <ConfirmButton to={"/seccessfulpurchase"} onClick={handleExternalSubmit}>
+          Confirmar Pedido
+        </ConfirmButton>
+      ) : (
+        <DisabledButton>Confirmar Pedido</DisabledButton>
+      )}
     </CardListContainer>
   );
 }

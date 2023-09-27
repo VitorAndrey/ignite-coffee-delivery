@@ -1,14 +1,61 @@
-import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "@phosphor-icons/react";
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+} from "@phosphor-icons/react";
 import CartList from "./components/cartList";
-import { AdressCard, CardSection, CartSectionContainer, PaymentCard } from "./style";
+import {
+  AdressCard,
+  CardSection,
+  CartSectionContainer,
+  PaymentCard,
+} from "./style";
 import { InputContainer } from "../ SuccessfulPurchase/style";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { FormEvent, useRef } from "react";
+
+type Inputs = {
+  cep: string;
+  street: string;
+  number: number;
+  neighborhood: string;
+  city: string;
+  uf: string;
+};
 
 export function Cart() {
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+  const handleExternalSubmit = () => {
+    console.log("submit button cliked");
+
+    if (formRef.current) {
+      formRef.current.submit();
+      console.log("dispatch Submit event");
+    }
+  };
+
+  function submitedForm(e: FormEvent) {
+    e.preventDefault();
+    console.log("on sumbmit in form called");
+
+    handleSubmit(onSubmit);
+  }
+
   return (
     <CartSectionContainer>
       <CardSection>
         <h2>Cafés selecionados</h2>
-        <CartList />
+        <CartList handleExternalSubmit={handleExternalSubmit} />
       </CardSection>
       <div>
         <h2>Complete seu pedido</h2>
@@ -22,19 +69,65 @@ export function Cart() {
             </p>
           </div>
 
-          <InputContainer>
-            <input type="number" placeholder="CEP" className="inputOne" required />
+          <InputContainer ref={formRef} onSubmit={submitedForm}>
+            <input
+              type="number"
+              placeholder="CEP"
+              className="inputOne"
+              required
+              {...register("cep")}
+            />
             <div>
-              <input type="text" placeholder="Rua" className="inputTwo" required />
+              <input
+                type="text"
+                placeholder="Rua"
+                id="Rua"
+                className="inputTwo"
+                required
+                {...register("street")}
+              />
             </div>
             <div>
-              <input type="number" placeholder="Número" className="inputThree" required />
-              <input type="text" placeholder="Complemento" className="inputFour" />
+              <input
+                type="number"
+                placeholder="Número"
+                id="Número"
+                className="inputThree"
+                required
+                {...register("number")}
+              />
+              <input
+                type="text"
+                placeholder="Complemento"
+                id="Complemento"
+                className="inputFour"
+              />
             </div>
             <div>
-              <input type="text" placeholder="Bairro" className="inputFive" required />
-              <input type="text" placeholder="Cidade" className="inputSix" required />
-              <input type="text" placeholder="UF" className="inputSeven" required />
+              <input
+                type="text"
+                placeholder="Bairro"
+                id="Bairro"
+                className="inputFive"
+                required
+                {...register("neighborhood")}
+              />
+              <input
+                type="text"
+                placeholder="Cidade"
+                id="Cidade"
+                className="inputSix"
+                required
+                {...register("city")}
+              />
+              <input
+                type="text"
+                placeholder="UF"
+                id="UF"
+                className="inputSeven"
+                required
+                {...register("uf")}
+              />
             </div>
           </InputContainer>
         </AdressCard>

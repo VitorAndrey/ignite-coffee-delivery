@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const CardListContainer = styled.div`
   max-width: 448px;
@@ -33,7 +34,7 @@ export const CardListContainer = styled.div`
   }
 `;
 
-export const ConfirmButton = styled.button`
+export const ConfirmButton = styled(Link)`
   background: ${(props) => props.theme["yellow-default"]};
   color: white;
   border: none;
@@ -46,14 +47,23 @@ export const ConfirmButton = styled.button`
   font-size: ${(props) => props.theme["button-md-size"]};
   border-radius: 6px;
 
-  :disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
-
   a {
     color: white;
   }
+`;
+
+export const DisabledButton = styled.button`
+  background: ${(props) => props.theme["yellow-light"]};
+  color: white;
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.6rem 0;
+  margin: 0 1rem;
+  cursor: not-allowed;
+  font-size: ${(props) => props.theme["button-md-size"]};
+  border-radius: 6px;
 `;
 
 export const TotalContainer = styled.div`
@@ -68,7 +78,12 @@ export const ListContainer = styled.div`
   align-items: center;
 `;
 
-export const EmptyCartImage = styled.img`
+export const EmptyCartImage = styled.div`
   max-width: 200px;
+  height: 200px;
   width: 100%;
+
+  img {
+    width: 100%;
+  }
 `;
