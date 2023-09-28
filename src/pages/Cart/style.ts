@@ -80,19 +80,23 @@ export const PaymentCard = styled.div`
     align-items: center;
     gap: 0.8rem;
     flex-wrap: wrap;
-
-    button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.8rem;
-      background: ${(props) => props.theme["base-button"]};
-      font-size: 12px;
-      text-transform: uppercase;
-      width: 178px;
-      height: 50px;
-      border-radius: 6px;
-      border: none;
-    }
   }
+`;
+
+type ButtonProps = {
+  $activetbn: boolean;
+};
+export const PaymentButton = styled.button<ButtonProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  background: ${(props) => props.theme["base-button"]};
+  font-size: 12px;
+  text-transform: uppercase;
+  width: 178px;
+  height: 50px;
+  border-radius: 6px;
+  border: none;
+  ${(props) => props.$activetbn && `border: 1px solid #8f5df7;`}
 `;

@@ -10,11 +10,12 @@ import {
   AdressCard,
   CardSection,
   CartSectionContainer,
+  PaymentButton,
   PaymentCard,
 } from "./style";
 import { InputContainer } from "../ SuccessfulPurchase/style";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 type Inputs = {
   cep: string;
@@ -25,14 +26,13 @@ type Inputs = {
   uf: string;
 };
 
+type PaymentType = "debit" | "credit" | "cash";
+
 export function Cart() {
   const formRef = useRef<HTMLFormElement | null>(null);
+  const [paymentMethod, setPaymentMethod] = useState<PaymentType>("cash");
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   const handleExternalSubmit = () => {
@@ -141,18 +141,27 @@ export function Cart() {
           </div>
 
           <div>
-            <button>
-              <CreditCard size={18} color="#8047f8" />
-              <p>Cartão de crédito</p>
-            </button>
-            <button>
-              <Bank size={18} color="#8047f8" />
-              <p>cartão de débito</p>
-            </button>
-            <button>
+            <PaymentButton
+              $activetbn={paymentMethod === "cash"}
+              onClick={() => setPaymentMethod("cash")}
+            >
               <Money size={18} color="#8047f8" />
               <p>dinheiro</p>
-            </button>
+            </PaymentButton>
+            <PaymentButton
+              $activetbn={paymentMethod === "credit"}
+              onClick={() => setPaymentMethod("credit")}
+            >
+              <CreditCard size={18} color="#8047f8" />
+              <p>Cartão de crédito</p>
+            </PaymentButton>
+            <PaymentButton
+              $activetbn={paymentMethod === "debit"}
+              onClick={() => setPaymentMethod("debit")}
+            >
+              <Bank size={18} color="#8047f8" />
+              <p>cartão de débito</p>
+            </PaymentButton>
           </div>
         </PaymentCard>
       </div>
