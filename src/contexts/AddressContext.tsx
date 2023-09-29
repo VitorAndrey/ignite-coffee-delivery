@@ -7,6 +7,7 @@ type Address = {
   neighborhood: string;
   city: string;
   uf: string;
+  paymentMethod: "debit" | "credit" | "cash";
 };
 
 interface AddressContextType {
@@ -24,6 +25,7 @@ export function AddressContextProvider({ children }: { children: ReactNode }) {
     number: 54,
     street: "Rua das margaridas",
     uf: "RJ",
+    paymentMethod: "cash",
   });
 
   function updateAddres(address: Address) {
@@ -31,6 +33,8 @@ export function AddressContextProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <AddressContext.Provider value={{ address, updateAddres }}>{children}</AddressContext.Provider>
+    <AddressContext.Provider value={{ address, updateAddres }}>
+      {children}
+    </AddressContext.Provider>
   );
 }

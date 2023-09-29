@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyle } from "./styles/global";
 import { CartContextProvider } from "./contexts/CartContext";
+import { AddressContextProvider } from "./contexts/AddressContext";
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={defaultTheme}>
           <CartContextProvider>
-            <Router />
+            <AddressContextProvider>
+              <Router />
+            </AddressContextProvider>
           </CartContextProvider>
           <GlobalStyle />
         </ThemeProvider>

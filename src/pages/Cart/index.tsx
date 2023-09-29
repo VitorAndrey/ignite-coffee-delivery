@@ -15,40 +15,53 @@ import {
 } from "./style";
 import { InputContainer } from "../ SuccessfulPurchase/style";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useContext, useRef, useState } from "react";
+import { AddressContext } from "../../contexts/AddressContext";
 
-type Inputs = {
-  cep: string;
-  street: string;
-  number: number;
-  neighborhood: string;
-  city: string;
-  uf: string;
-};
+import * as yup from "yup";
+
+type Inputs = yup.InferType<typeof schema>;
 
 type PaymentType = "debit" | "credit" | "cash";
+
+const schema = yup
+  .object({
+    cep: yup.string().required(),
+    street: yup.string().required(),
+    number: yup.number().required().positive().integer(),
+    neighborhood: yup.string().required(),
+    city: yup.string().required(),
+    uf: yup.string().required().length(2, "UF deve ter dois caracteres"),
+  })
+  .required();
 
 export function Cart() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<PaymentType>("cash");
+  const { updateAddres } = useContext(AddressContext);
 
-  const { register, handleSubmit } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const { register, handleSubmit } = useForm<Inputs>({});
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const updatedData = {
+      ...data,
+      paymentMethod,
+    };
+    console.log(updatedData);
+    updateAddres(updatedData);
+  };
 
   const handleExternalSubmit = () => {
-    console.log("submit button cliked");
-
     if (formRef.current) {
-      formRef.current.submit();
-      console.log("dispatch Submit event");
+      formRef.current.dispatchEvent(
+        new Event("submit", { cancelable: true, bubbles: true })
+      );
     }
   };
 
   function submitedForm(e: FormEvent) {
     e.preventDefault();
-    console.log("on sumbmit in form called");
 
-    handleSubmit(onSubmit);
+    handleSubmit(onSubmit)();
   }
 
   return (
@@ -69,7 +82,7 @@ export function Cart() {
             </p>
           </div>
 
-          <InputContainer ref={formRef} onSubmit={submitedForm}>
+          <InputContainer ref={formRef} onSubmit={(e) => submitedForm(e)}>
             <input
               type="number"
               placeholder="CEP"
