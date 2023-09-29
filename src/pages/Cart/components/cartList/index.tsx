@@ -30,7 +30,9 @@ export default function CartList({ handleExternalSubmit }: CartListProps) {
     <CardListContainer>
       <ListContainer>
         {cartList.length > 0 ? (
-          cartList.map((coffee, index) => <CartItem coffee={coffee} key={index} />)
+          cartList.map((coffee, index) => (
+            <CartItem coffee={coffee} key={index} />
+          ))
         ) : (
           <EmptyCartImage>
             <img src="/emptyCart.png" alt="Carregando..." />
@@ -68,7 +70,7 @@ export default function CartList({ handleExternalSubmit }: CartListProps) {
         </p>
       </TotalContainer>
       {hasItems ? (
-        <ConfirmButton to={"/seccessfulpurchase"} onClick={handleExternalSubmit}>
+        <ConfirmButton onClick={handleExternalSubmit}>
           Confirmar Pedido
         </ConfirmButton>
       ) : (

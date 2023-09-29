@@ -19,12 +19,12 @@ export const AddressContext = createContext({} as AddressContextType);
 
 export function AddressContextProvider({ children }: { children: ReactNode }) {
   const [address, setAddress] = useState<Address>({
-    cep: "35501043",
+    cep: "40028922",
     city: "Divinópolis",
-    neighborhood: "Manoel Valinhos",
-    number: 54,
-    street: "Rua das margaridas",
-    uf: "RJ",
+    neighborhood: "Nárnia",
+    number: 0,
+    street: "Rua dos bobos",
+    uf: "MG",
     paymentMethod: "cash",
   });
 

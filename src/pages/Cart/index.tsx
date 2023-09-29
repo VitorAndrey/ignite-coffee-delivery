@@ -14,24 +14,30 @@ import {
   PaymentCard,
 } from "./style";
 import { InputContainer } from "../ SuccessfulPurchase/style";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { FormEvent, useContext, useRef, useState } from "react";
+import { FormEvent, useContext, useEffect, useRef, useState } from "react";
 import { AddressContext } from "../../contexts/AddressContext";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 type Inputs = yup.InferType<typeof schema>;
+
+type ModalType = { open: boolean; input: keyof Inputs | null };
 
 type PaymentType = "debit" | "credit" | "cash";
 
 const schema = yup
   .object({
-    cep: yup.string().required(),
-    street: yup.string().required(),
-    number: yup.number().required().positive().integer(),
-    neighborhood: yup.string().required(),
-    city: yup.string().required(),
-    uf: yup.string().required().length(2, "UF deve ter dois caracteres"),
+    cep: yup.string().required("Insira o CEP."),
+    street: yup.string().required("Insira a Rua."),
+    number: yup.number().required("Insira o Número.").positive().integer(),
+    neighborhood: yup.string().required("Insira o Bairro."),
+    city: yup.string().required("Insira a Cidade."),
+    uf: yup
+      .string()
+      .required("Insira o Estado.")
+      .length(2, "UF deve ter dois caracteres"),
   })
   .required();
 
@@ -40,7 +46,18 @@ export function Cart() {
   const [paymentMethod, setPaymentMethod] = useState<PaymentType>("cash");
   const { updateAddres } = useContext(AddressContext);
 
-  const { register, handleSubmit } = useForm<Inputs>({});
+  const [isModalOpen, setIsModalOpen] = useState<ModalType>({
+    open: false,
+    input: null,
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>({
+    resolver: yupResolver(schema),
+  });
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const updatedData = {
       ...data,
@@ -63,6 +80,30 @@ export function Cart() {
 
     handleSubmit(onSubmit)();
   }
+
+  useEffect(() => {
+    const inputs: (keyof Inputs)[] = [
+      "cep",
+      "street",
+      "number",
+      "neighborhood",
+      "city",
+      "uf",
+    ];
+
+    const length = inputs.length;
+
+    for (let i = 0; i < length; i++) {
+      if (errors[inputs[i]]?.message) {
+        setIsModalOpen({ open: true, input: inputs[i] });
+        setTimeout(() => {
+          setIsModalOpen({ open: false, input: null });
+        }, 5000);
+
+        return;
+      }
+    }
+  }, [errors]);
 
   return (
     <CartSectionContainer>
@@ -178,6 +219,7 @@ export function Cart() {
           </div>
         </PaymentCard>
       </div>
+      {isModalOpen.open && <div>{errors[isModalOpen.input]?.message}</div>}
     </CartSectionContainer>
   );
 }

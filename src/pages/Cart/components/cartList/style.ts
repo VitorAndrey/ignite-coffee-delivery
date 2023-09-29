@@ -34,7 +34,7 @@ export const CardListContainer = styled.div`
   }
 `;
 
-export const ConfirmButton = styled(Link)`
+export const ConfirmButton = styled.button`
   background: ${(props) => props.theme["yellow-default"]};
   color: white;
   border: none;
