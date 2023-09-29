@@ -34,7 +34,7 @@ export default function SuccessfulPurchase() {
                   {address.street}, {address.number}
                 </strong>
                 <br />
-                Farrapos - Porto Alegre, RS
+                {address.city}, {address.uf}
               </p>
             </div>
             <div>
@@ -54,7 +54,11 @@ export default function SuccessfulPurchase() {
               <p>
                 Pagamento na entrega
                 <br />
-                <strong>Cartão de Crédito</strong>
+                <strong>
+                  {address.paymentMethod === "credit" && "Cartão de Crédito"}
+                  {address.paymentMethod === "debit" && "Cartão de Débito"}
+                  {address.paymentMethod === "cash" && "Dinheiro"}
+                </strong>
               </p>
             </div>
           </InfoContainer>

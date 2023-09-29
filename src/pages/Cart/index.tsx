@@ -227,11 +227,11 @@ export function Cart() {
           </div>
         </PaymentCard>
       </div>
-      {isModalOpen.open && errors[isModalOpen.input] && (
+      {/* {isModalOpen.open && errors[isModalOpen.input] && (
         <div>
           <p>{errors[isModalOpen.input]?.message}</p>
         </div>
-      )}
+      )} */}
     </CartSectionContainer>
   );
 }
