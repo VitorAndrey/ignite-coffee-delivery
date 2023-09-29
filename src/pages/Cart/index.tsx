@@ -5,7 +5,9 @@ import {
   MapPinLine,
   Money,
 } from "@phosphor-icons/react";
+
 import CartList from "./components/cartList";
+
 import {
   AdressCard,
   CardSection,
@@ -13,6 +15,7 @@ import {
   PaymentButton,
   PaymentCard,
 } from "./style";
+
 import { InputContainer } from "../ SuccessfulPurchase/style";
 import { FormEvent, useContext, useEffect, useRef, useState } from "react";
 import { AddressContext } from "../../contexts/AddressContext";
@@ -20,6 +23,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import { useNavigate } from "react-router-dom";
 
 type Inputs = yup.InferType<typeof schema>;
 
@@ -45,6 +50,8 @@ export function Cart() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<PaymentType>("cash");
   const { updateAddres } = useContext(AddressContext);
+
+  const navigate = useNavigate();
 
   const [isModalOpen, setIsModalOpen] = useState<ModalType>({
     open: false,
@@ -79,6 +86,7 @@ export function Cart() {
     e.preventDefault();
 
     handleSubmit(onSubmit)();
+    navigate("/seccessfulpurchase");
   }
 
   useEffect(() => {
@@ -219,7 +227,11 @@ export function Cart() {
           </div>
         </PaymentCard>
       </div>
-      {isModalOpen.open && <div>{errors[isModalOpen.input]?.message}</div>}
+      {isModalOpen.open && errors[isModalOpen.input] && (
+        <div>
+          <p>{errors[isModalOpen.input]?.message}</p>
+        </div>
+      )}
     </CartSectionContainer>
   );
 }

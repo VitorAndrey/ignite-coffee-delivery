@@ -1,4 +1,5 @@
 import { CurrencyDollar, MapPin, Timer } from "@phosphor-icons/react";
+
 import {
   ContentContainer,
   ImageConteiner,
@@ -10,7 +11,12 @@ import {
   DarkYellowSpan,
 } from "./style";
 
+import { useContext } from "react";
+import { AddressContext } from "../../contexts/AddressContext";
+
 export default function SuccessfulPurchase() {
+  const { address } = useContext(AddressContext);
+
   return (
     <SuccessfulContainer>
       <h2>Uhu! Pedido confirmado</h2>
@@ -23,7 +29,10 @@ export default function SuccessfulPurchase() {
                 <MapPin size={16} color="#ffffff" weight="fill" />
               </PurpleSpan>
               <p>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{" "}
+                <strong>
+                  {address.street}, {address.number}
+                </strong>
                 <br />
                 Farrapos - Porto Alegre, RS
               </p>
