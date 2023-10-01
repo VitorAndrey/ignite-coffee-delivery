@@ -74,7 +74,13 @@ export function Cart() {
   function submitedForm(e: FormEvent) {
     e.preventDefault();
 
-    handleSubmit(onSubmit)();
+    handleSubmit(onSubmit)()
+      .then(() => {
+        console.log("success!");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
