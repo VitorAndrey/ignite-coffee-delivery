@@ -17,7 +17,7 @@ import {
 } from "./style";
 
 import { InputContainer } from "../ SuccessfulPurchase/style";
-import { FormEvent, useContext, useEffect, useRef, useState } from "react";
+import { FormEvent, useContext, useRef, useState } from "react";
 import { AddressContext } from "../../contexts/AddressContext";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -27,8 +27,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 
 type Inputs = yup.InferType<typeof schema>;
-
-type ModalType = { open: boolean; input: keyof Inputs | null };
 
 type PaymentType = "debit" | "credit" | "cash";
 
@@ -53,16 +51,7 @@ export function Cart() {
 
   const navigate = useNavigate();
 
-  const [isModalOpen, setIsModalOpen] = useState<ModalType>({
-    open: false,
-    input: null,
-  });
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>({
+  const { register, handleSubmit } = useForm<Inputs>({
     resolver: yupResolver(schema),
   });
   const onSubmit: SubmitHandler<Inputs> = (data) => {
@@ -70,8 +59,8 @@ export function Cart() {
       ...data,
       paymentMethod,
     };
-    console.log(updatedData);
     updateAddres(updatedData);
+    navigate("/seccessfulpurchase");
   };
 
   const handleExternalSubmit = () => {
@@ -86,32 +75,7 @@ export function Cart() {
     e.preventDefault();
 
     handleSubmit(onSubmit)();
-    navigate("/seccessfulpurchase");
   }
-
-  useEffect(() => {
-    const inputs: (keyof Inputs)[] = [
-      "cep",
-      "street",
-      "number",
-      "neighborhood",
-      "city",
-      "uf",
-    ];
-
-    const length = inputs.length;
-
-    for (let i = 0; i < length; i++) {
-      if (errors[inputs[i]]?.message) {
-        setIsModalOpen({ open: true, input: inputs[i] });
-        setTimeout(() => {
-          setIsModalOpen({ open: false, input: null });
-        }, 5000);
-
-        return;
-      }
-    }
-  }, [errors]);
 
   return (
     <CartSectionContainer>
@@ -137,6 +101,7 @@ export function Cart() {
               placeholder="CEP"
               className="inputOne"
               required
+              autoComplete="off"
               {...register("cep")}
             />
             <div>
@@ -145,6 +110,7 @@ export function Cart() {
                 placeholder="Rua"
                 id="Rua"
                 className="inputTwo"
+                autoComplete="off"
                 required
                 {...register("street")}
               />
@@ -154,6 +120,7 @@ export function Cart() {
                 type="number"
                 placeholder="Número"
                 id="Número"
+                autoComplete="off"
                 className="inputThree"
                 required
                 {...register("number")}
@@ -162,6 +129,7 @@ export function Cart() {
                 type="text"
                 placeholder="Complemento"
                 id="Complemento"
+                autoComplete="off"
                 className="inputFour"
               />
             </div>
@@ -172,6 +140,7 @@ export function Cart() {
                 id="Bairro"
                 className="inputFive"
                 required
+                autoComplete="off"
                 {...register("neighborhood")}
               />
               <input
@@ -180,6 +149,7 @@ export function Cart() {
                 id="Cidade"
                 className="inputSix"
                 required
+                autoComplete="off"
                 {...register("city")}
               />
               <input
@@ -188,6 +158,7 @@ export function Cart() {
                 id="UF"
                 className="inputSeven"
                 required
+                autoComplete="off"
                 {...register("uf")}
               />
             </div>
@@ -227,11 +198,6 @@ export function Cart() {
           </div>
         </PaymentCard>
       </div>
-      {/* {isModalOpen.open && errors[isModalOpen.input] && (
-        <div>
-          <p>{errors[isModalOpen.input]?.message}</p>
-        </div>
-      )} */}
     </CartSectionContainer>
   );
 }
